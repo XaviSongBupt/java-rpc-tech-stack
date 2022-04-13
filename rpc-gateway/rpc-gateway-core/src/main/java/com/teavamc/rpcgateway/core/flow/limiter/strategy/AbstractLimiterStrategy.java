@@ -61,7 +61,8 @@ public abstract class AbstractLimiterStrategy implements LimiterStrategy {
             // 计数器 classpath:limiter/count_limiter.lua
             // 令牌桶 classpath:limiter/tokenbucket_limiter.lua
             // 获取资源
-            this.script = read("classpath:limiter/" + this.scriptName);
+
+            this.script = read("classpath*:**/" + this.scriptName);
             redisScript = new DefaultRedisScript(this.script, Long.class);
         } catch (IOException e) {
             log.error("read script error ", e);

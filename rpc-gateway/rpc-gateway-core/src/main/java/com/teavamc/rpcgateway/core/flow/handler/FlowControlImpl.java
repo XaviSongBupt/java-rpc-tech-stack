@@ -82,8 +82,11 @@ public class FlowControlImpl implements FlowControl {
      * @return
      */
     private LimiterPolicy getLimiterPolicyByCode(int code, FlowControlConfig flowControlConfig) {
+        // 根据code获取限流器类型，1：对应令牌桶
         LimiterEnum limiterEnum = LimiterEnum.getLimiterByCode(code);
+        // 获取限流时间单位
         long intervalLimiter = TimeUtil.getMillisecond(LimiterTimeUnitEnum.valueOf(flowControlConfig.getTimeUnit()));
+        // 获取阈值，在令牌桶情况下就是单位时间内桶的最大值
         long limiterValue = flowControlConfig.getValue();
         switch (Objects.requireNonNull(limiterEnum)) {
             case COUNT:

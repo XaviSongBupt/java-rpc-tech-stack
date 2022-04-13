@@ -14,11 +14,19 @@
 
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>com.teavamc</groupId>-->
+<!--            <artifactId>rpc-gateway-api</artifactId>-->
+<!--            <version>${project.version}</version>-->
+<!--        </dependency>-->
+
         <dependency>
-            <groupId>com.teavamc</groupId>
-            <artifactId>rpc-gateway-api</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
+            <scope>provided</scope>
         </dependency>
+
 
         <dependency>
             <groupId>com.teavamc</groupId>

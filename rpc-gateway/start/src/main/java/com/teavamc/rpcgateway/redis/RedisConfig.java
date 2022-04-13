@@ -36,6 +36,7 @@ public class RedisConfig {
         // Jedis 连接池配置
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         // 拿到工程配置中设置的 redis 参数
+        redisProperties.getJedis().setPool(new RedisProperties.Pool());
         RedisProperties.Pool poolConfig = redisProperties.getJedis().getPool();
         // 最大连接数
         jedisPoolConfig.setMaxTotal(poolConfig.getMaxActive());
@@ -47,7 +48,8 @@ public class RedisConfig {
         // 实例化 Jedis 连接池
         JedisPool jedisPool = new JedisPool(jedisPoolConfig,
                 redisProperties.getHost(), redisProperties.getPort(),
-                Math.toIntExact(redisProperties.getTimeout().toMillis()),
+//                Math.toIntExact(redisProperties.getTimeout().toMillis()),
+                2000,
                 redisProperties.getPassword());
         log.info("完成 Redis 连接池的 Bean 初始化");
         return jedisPool;

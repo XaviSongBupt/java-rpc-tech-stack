@@ -48,7 +48,7 @@ public class FlowControlConfig implements Serializable {
     /**
      * 限流类型
      */
-    private Integer LimiterType;
+    private Integer limiterType;
 
     /**
      * 限流的单位 秒/分钟/小时/天

@@ -17,7 +17,7 @@
     </properties>
 
     <modules>
-        <module>rpc-gateway-api</module>
+<!--        <module>rpc-gateway-api</module>-->
         <module>rpc-gateway-web</module>
         <module>start</module>
         <module>rpc-gateway-core</module>

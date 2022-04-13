@@ -33,7 +33,7 @@ public class TestRateLimiterController {
 
 
     @PostMapping(value = "/test")
-    public void testFlowControl(@RequestBody FlowControlConfig controlConfig) {
+    public String testFlowControl(@RequestBody FlowControlConfig controlConfig) {
         Long apiId = controlConfig.getId();
         log.info("接收到 ApiId :{} 的请求", apiId);
         apiRequestCount.put(apiId, apiRequestCount.getOrDefault(apiId, 0) + 1);
@@ -49,6 +49,7 @@ public class TestRateLimiterController {
         int successCnt = apiRequestSuccessCount.get(apiId) == null ? 0 : apiRequestSuccessCount.get(apiId);
         int failedCnt = apiRequestFailedCount.get(apiId) == null ? 0 : apiRequestFailedCount.get(apiId);
         log.info(" ApiId :{} 的请求是否被限流:{} | 共请求{}次,放行{}次,限流{}次", apiId, res, totalCnt, successCnt, failedCnt);
+        return " ApiId :"+ apiId +" 的请求是否被限流:"+ res +" | 共请求"+ totalCnt +"次,放行"+ successCnt +"次,限流"+ failedCnt +"次";
     }
 
 }
